@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+
+
+</head>
+
+<body>
+    <p>Welcome to the main page</p>
+    <form id="main">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <button id="logInButton" type="submit">Log in</button>
+    </form>
+    <p>Sign in if you don't have an accout</p>
+    <button id="signInButton" type="button">Sign in</button>
+
+    <script>
+        const signIn = document.getElementById("signInButton")
+        signIn.addEventListener("click", () => {
+            window.location.replace('/registration')
+        })
+
+        const form = document.getElementById('main')
+        form?.addEventListener("submit", async (event) => {
+            event.preventDefault()
+            const data = new FormData(form)
+            const body = JSON.stringify(Object.fromEntries(data))
+            console.log('Hi 1')
+            let response = await fetch('/main', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                redirect: 'follow',
+                body: body
+            }).then(res => {
+                console.log(res.url)
+                document.location = res.url;
+            })
+        })
+
+    </script>
+
+</body>
+
+</html>

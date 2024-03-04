@@ -1,0 +1,14 @@
+[
+    {
+        "username": "user",
+        "password": "123",
+        "block": false,
+        "restrict": false
+    },
+    {
+        "username": "st120228",
+        "password": "123",
+        "block": false,
+        "restrict": false
+    }
+]
